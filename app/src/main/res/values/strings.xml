@@ -31,4 +31,11 @@
     <string name="create_user_title">Create user</string>
     <string name="set">set</string>
     <string name="skip">skip</string>
+    <string name="no_connection">Check your internet connection</string>
+    <string name="error_create_team">Error creating team</string>
+    <string name="success_create_team">Team created successfully</string>
+    <string name="error_check_team">Can\'t find team with this name</string>
+    <string name="error_login">Wrong credentials</string>
+    <string name="error_fill_data">Please fill all required data</string>
+    <string name="error_sign_up">Something went wrong</string>
 </resources>

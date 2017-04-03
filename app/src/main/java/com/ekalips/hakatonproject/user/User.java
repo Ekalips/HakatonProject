@@ -7,6 +7,8 @@ import android.databinding.Bindable;
 
 import com.ekalips.hakatonproject.BR;
 import com.ekalips.hakatonproject.MyApplication;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by wldev on 4/3/17.
@@ -18,23 +20,37 @@ public class User extends BaseObservable {
     private static User instance;
     private static SharedPreferences preferences;
 
+    @SerializedName("name")
+    @Expose
     @Bindable
     private
     String userName;
+    @SerializedName("email")
+    @Expose
     @Bindable
     private
     String userEmail;
+    @SerializedName("photo")
+    @Expose
     @Bindable
     private
     String userPhoto;
+    @SerializedName("teamName")
+    @Expose
     @Bindable
     private
     String teamName;
+    @SerializedName("id")
+    @Expose
     @Bindable
     private
     String userId;
+    @SerializedName("token")
+    @Expose
     private
     String authToken;
+    @SerializedName("teamId")
+    @Expose
     private
     String roomToken;
 
@@ -138,6 +154,16 @@ public class User extends BaseObservable {
 
     public void clear() {
         preferences.edit().clear().apply();
+    }
+
+    public void applyFrom(User user) {
+        setRoomToken(user.getRoomToken());
+        setAuthToken(user.getAuthToken());
+        setTeamName(user.getTeamName());
+        setUserEmail(user.getUserEmail());
+        setUserId(user.getUserId());
+        setUserName(user.getUserName());
+        setUserPhoto(user.getUserPhoto());
     }
 
     private enum Fields {

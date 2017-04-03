@@ -475,13 +475,13 @@ public class Utils {
 
     public static void startCreateTeamProcess(Context context) {
         Intent intent = new Intent(context, SignUpActivity.class);
-        intent.putExtra(StepperActivity.EXTRA_STEP,new int[]{StepType.createTeam.getType(),StepType.setTeamPhoto.getType(),StepType.createUser.getType(),StepType.setUserPhoto.getType()});
+        intent.putExtra(StepperActivity.EXTRA_STEP,new int[]{StepType.createTeam.getType(),StepType.createUser.getType()});
         context.startActivity(intent);
     }
 
     public static void startCreateUserProcess(Context context) {
         Intent intent = new Intent(context, SignUpActivity.class);
-        intent.putExtra(StepperActivity.EXTRA_STEP,new int[]{StepType.createUser.getType(),StepType.setUserPhoto.getType()});
+        intent.putExtra(StepperActivity.EXTRA_STEP,new int[]{StepType.createUser.getType()});
         context.startActivity(intent);
     }
 
