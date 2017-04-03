@@ -33,11 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
 
-        binding.setTitle(User.getInstance().getTeamName());
-
         binding.recyclerView.setAdapter(new ProjectRecyclerViewAdapter());
         realm = Realm.getDefaultInstance();
-
         projects = realm.where(Project.class).findFirstAsync();
         projects.addChangeListener(projectsChangeListener);
 
@@ -80,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList objects = new ArrayList<>();
         objects.add(new ProjectListHeader(projects.getProjectImage(),projects.getProjectName(),projects.getProjDescr()));
         objects.addAll(projects.getTasks());
+        binding.setTitle(projects.getProjectName());
         binding.setData(objects);
     }
 
