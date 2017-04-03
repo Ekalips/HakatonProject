@@ -1,5 +1,6 @@
 package com.ekalips.hakatonproject.auth;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 
 import com.ekalips.hakatonproject.R;
 import com.ekalips.hakatonproject.databinding.ActivityLoginBinding;
+import com.ekalips.hakatonproject.main.MainActivity;
 import com.ekalips.hakatonproject.stuff.StepperActivity;
 
 public class LoginActivity extends StepperActivity {
@@ -71,5 +73,8 @@ public class LoginActivity extends StepperActivity {
     @Override
     public void onTaskComplete() {
         Log.d(TAG, "onTaskComplete: ");
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }
