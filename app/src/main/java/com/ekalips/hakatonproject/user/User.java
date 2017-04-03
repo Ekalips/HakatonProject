@@ -5,7 +5,8 @@ import android.content.SharedPreferences;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import com.ekalips.hakatonproject.BR;
+import com.ekalips.hakatonproject
+        .BR;
 import com.ekalips.hakatonproject.MyApplication;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -53,6 +54,10 @@ public class User extends BaseObservable {
     @Expose
     private
     String roomToken;
+    @SerializedName("role")
+    @Expose
+    private
+    int role;
 
 
     private User() {
@@ -62,10 +67,11 @@ public class User extends BaseObservable {
                 preferences.getString(Fields.id.toString(), ""),
                 preferences.getString(Fields.authToken.toString(), ""),
                 preferences.getString(Fields.roomToken.toString(), ""),
-                preferences.getString(Fields.teamName.toString(), ""));
+                preferences.getString(Fields.teamName.toString(), ""),
+                preferences.getInt(Fields.role.toString(), 0));
     }
 
-    private User(String userName, String userEmail, String userPhoto, String userId, String authToken, String roomToken, String teamName) {
+    private User(String userName, String userEmail, String userPhoto, String userId, String authToken, String roomToken, String teamName, int role) {
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPhoto = userPhoto;
@@ -73,6 +79,7 @@ public class User extends BaseObservable {
         this.authToken = authToken;
         this.roomToken = roomToken;
         this.teamName = teamName;
+        this.role = role;
     }
 
     public static User getInstance() {
@@ -101,6 +108,10 @@ public class User extends BaseObservable {
 
     public String getAuthToken() {
         return authToken;
+    }
+
+    public String getBearerToken(){
+        return "Bearer " + authToken;
     }
 
     public String getRoomToken() {
@@ -152,6 +163,12 @@ public class User extends BaseObservable {
         preferences.edit().putString(Fields.teamName.toString(), teamName).apply();
     }
 
+    public void setRole(int role) {
+        this.role = role;
+        notifyPropertyChanged(BR.role);
+        preferences.edit().putInt(Fields.role.toString(),role).apply();
+    }
+
     public void clear() {
         preferences.edit().clear().apply();
     }
@@ -164,9 +181,22 @@ public class User extends BaseObservable {
         setUserId(user.getUserId());
         setUserName(user.getUserName());
         setUserPhoto(user.getUserPhoto());
+        setRole(user.getRole());
+    }
+
+    public static boolean canAddProjects() {
+        return User.getInstance().getRole()==3;
+    }
+
+    public static boolean canAssignUser() {
+        return User.getInstance().getRole()>=2;
+    }
+
+    public int getRole() {
+        return role;
     }
 
     private enum Fields {
-        id, name, email, photo, authToken, roomToken, teamName;
+        id, name, email, photo, authToken, roomToken, teamName,role;
     }
 }

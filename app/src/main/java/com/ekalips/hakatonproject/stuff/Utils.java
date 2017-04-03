@@ -485,6 +485,15 @@ public class Utils {
         context.startActivity(intent);
     }
 
+    public static int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = MyApplication.get().getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = MyApplication.get().getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
     public static class EmailValidator implements Predicate<String> {
         @Override
         public boolean apply(String s) {

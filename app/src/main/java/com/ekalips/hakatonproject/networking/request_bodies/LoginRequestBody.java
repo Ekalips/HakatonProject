@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class LoginRequestBody {
-    @SerializedName("email")
+    @SerializedName("username")
     @Expose
     private String email = "";
     @SerializedName("password")

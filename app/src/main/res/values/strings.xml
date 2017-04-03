@@ -38,4 +38,11 @@
     <string name="error_login">Wrong credentials</string>
     <string name="error_fill_data">Please fill all required data</string>
     <string name="error_sign_up">Something went wrong</string>
+    <string name="navigation_drawer_open">Drawer open</string>
+    <string name="navigation_drawer_close">Drawer closed</string>
+    <string name="create_project">Create project</string>
+    <string name="projects">Projects: </string>
+    <string name="members">Members:</string>
+    <string name="error_fetching_members">Error fetching members</string>
+    <string name="error_fetching_projects">Error fetching projects</string>
 </resources>
