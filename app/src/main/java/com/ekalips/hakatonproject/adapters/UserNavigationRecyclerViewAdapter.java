@@ -85,8 +85,8 @@ public class UserNavigationRecyclerViewAdapter extends RecyclerView.Adapter<Bind
         this.data.add(new HeaderItem());
         this.data.addAll(data);
 
-        if (data.size() > 0)
-            notifyItemRangeChanged(0, data.size() - 1);
+        if ( this.data.size() > 0)
+            notifyItemRangeChanged(0,  this.data.size() - 1);
         else
             notifyDataSetChanged();
     }

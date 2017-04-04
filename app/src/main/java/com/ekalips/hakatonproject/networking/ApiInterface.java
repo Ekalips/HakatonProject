@@ -2,6 +2,7 @@ package com.ekalips.hakatonproject.networking;
 
 import com.ekalips.hakatonproject.data.Member;
 import com.ekalips.hakatonproject.data.Project;
+import com.ekalips.hakatonproject.networking.request_bodies.CreateNewProjRequestBody;
 import com.ekalips.hakatonproject.networking.request_bodies.CreateTeamBody;
 import com.ekalips.hakatonproject.networking.request_bodies.CreateUserBody;
 import com.ekalips.hakatonproject.networking.request_bodies.LoginRequestBody;
@@ -47,6 +48,9 @@ public interface ApiInterface {
     @GET("teams/{team_id}/members")
     Call<List<Member>> getTeamMembers(@Header("Authorization")String auth,@Path("team_id") String teamId);
 
-    @GET("projects/{team_id}")
-    Call<List<Project>> getProjects(@Header("Authorization")String auth, @Path("team_id") String teamId);
+    @GET("projects")
+    Call<List<Project>> getProjects(@Header("Authorization")String auth);
+
+    @POST("projects")
+    Call<ResponseBody> createProject(@Header("Authorization")String auth, @Body CreateNewProjRequestBody body);
 }

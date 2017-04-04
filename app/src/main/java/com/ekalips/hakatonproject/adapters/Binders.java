@@ -11,6 +11,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.bumptech.glide.Glide;
 import com.ekalips.hakatonproject.MyApplication;
+import com.ekalips.hakatonproject.data.Task;
 import com.ekalips.hakatonproject.stuff.DataSetInterface;
 import com.ekalips.hakatonproject.stuff.Utils;
 
@@ -123,6 +124,18 @@ public class Binders {
         try {
             Constructor<?> ctor = clazz.getConstructor();
             RecyclerView.Adapter adapter = (RecyclerView.Adapter) ctor.newInstance();
+            recyclerView.setAdapter(adapter);
+            setData(recyclerView, data);
+        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @BindingAdapter({"adapter","data", "item"})
+    public static void setAdapter(RecyclerView recyclerView,Class<? extends RecyclerView.Adapter> clazz, List data, Task task){
+        try {
+            Constructor<?> ctor = clazz.getConstructor(task.getClass());
+            RecyclerView.Adapter adapter = (RecyclerView.Adapter) ctor.newInstance(task);
             recyclerView.setAdapter(adapter);
             setData(recyclerView, data);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {

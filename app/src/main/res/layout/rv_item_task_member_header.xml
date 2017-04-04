@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="onClick"
+            type="com.ekalips.hakatonproject.stuff.ClickAdapter" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:layout_margin="8dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:padding="6dp"
+            android:src="@drawable/ic_add_white_person"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/assign_member_to_task"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+</layout>

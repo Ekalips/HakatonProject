@@ -45,4 +45,13 @@
     <string name="members">Members:</string>
     <string name="error_fetching_members">Error fetching members</string>
     <string name="error_fetching_projects">Error fetching projects</string>
+    <string name="create_proj_title">Create new project</string>
+    <string name="hint_project_name">Project name</string>
+    <string name="hint_proj_descr">Project description</string>
+    <string name="set_date_btn">Set date</string>
+    <string name="create">Create</string>
+    <string name="error_create_proj">Error creating project</string>
+    <string name="success_create_proj">Successfully created project</string>
+    <string name="no_project_placeholder">Nothing to view. You can select project in the drawer (if you have one).</string>
+    <string name="assign_member_to_task">Assign member to task</string>
 </resources>

@@ -1,5 +1,8 @@
 package com.ekalips.hakatonproject.data;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -9,13 +12,28 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Task  extends RealmObject{
+    @SerializedName("done")
+    @Expose
     private boolean isDone;
+    @SerializedName("title")
+    @Expose
     private String taskName;
+    @SerializedName("description")
+    @Expose
     private String taskDescr;
     @PrimaryKey
+    @SerializedName("_id")
+    @Expose
     private
     String taskId;
+    @SerializedName("deadline")
+    @Expose
     private long dueDate;
+    @SerializedName("isAssigned")
+    @Expose
+    private boolean isAssigned;
+    @SerializedName("assigned")
+    @Expose
     private RealmList<Member> assignedMembers;
 
 
@@ -77,5 +95,9 @@ public class Task  extends RealmObject{
 
     public void setAssignedMembers(RealmList<Member> assignedMembers) {
         this.assignedMembers = assignedMembers;
+    }
+
+    public boolean isAssigned() {
+        return isAssigned;
     }
 }

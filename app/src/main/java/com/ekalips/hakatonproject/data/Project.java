@@ -1,5 +1,8 @@
 package com.ekalips.hakatonproject.data;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -9,14 +12,24 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Project extends RealmObject{
+    @SerializedName("title")
+    @Expose
     private String projectName;
+    @SerializedName("description")
+    @Expose
     private String projDescr;
+    @SerializedName("dedline")
+    @Expose
     private long dueDate;
     private boolean isDone;
-    private String projectImage;
+    private String projectImage = "https://cs7058.userapi.com/c626616/v626616059/46638/xhxRhvlknHc.jpg";
     @PrimaryKey
+    @SerializedName("_id")
+    @Expose
     private
     String projectId;
+    @SerializedName("tasks")
+    @Expose
     private RealmList<Task> tasks;
 
     public Project(String projectName, String projDescr, long dueDate, boolean isDone, String projectId, RealmList<Task> tasks, String projectImage) {
